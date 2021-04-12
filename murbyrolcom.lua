@@ -8,8 +8,8 @@ local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
 Mouse.KeyDown:Connect(function(key)
 	if key:lower() == "m" then
-		--local TP = game:GetService("TeleportService")
-		--TP:Teleport(4572253581)
+		-- local TP = game:GetService("TeleportService")
+		-- TP:Teleport(4572253581)
 		execCmd("serverhop")
 	end
 end)
