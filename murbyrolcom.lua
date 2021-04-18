@@ -23,7 +23,7 @@ end
 
 loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/daximul/who/main/a/test/what/script.lua")))();
 
-wait(2)
+wait(1)
 
 loadstring(game:HttpGetAsync(("https://pastebin.com/raw/XCep3rCU")))();
 local Player = game:GetService("Players").LocalPlayer
@@ -50,6 +50,10 @@ game:GetService("UserInputService").InputBegan:Connect(function(Key, IsChat)
 	end
 end)
 
-wait(2)
+wait(1)
 
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ZinityDrops/OwlHubLink/master/OwlHubBack.lua"))();
+if (not is_sirhurt_closure) and syn then
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/ZinityDrops/OwlHubLink/master/OwlHubBack.lua"))();
+else
+	loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Patch-Shack/newLoad/master/owlhub.lua"))();
+end
