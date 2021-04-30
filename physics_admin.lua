@@ -871,54 +871,6 @@ end
 Startup()
 newCmd(" ", {}, " ", " ", function(args, speaker) end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 local sethidden = sethiddenproperty or set_hidden_property or set_hidden_prop
 
 local function SetSimulationRadius()
@@ -946,6 +898,8 @@ local function SelectedPartsCheck()
 		return true
 	end
 end
+
+spawn(function()
 
 newCmd("nogravparts", {}, function(args, speaker)
 	SetSimulationRadius()
@@ -2207,4 +2161,6 @@ newCmd("unearthquake", {}, function(args, speaker)
 							end
 						end
 							bruh = false
+end)
+
 end)
