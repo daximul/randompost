@@ -14,5 +14,15 @@ local Phrases = {
 	"ur whitelist key is jk there is none lmaooaeofiair",
 	"save me from this hell hole called furry land",
 	"what",
+	"bit.ly/3gV1kmL",
+	"i have no oxygen",
+	"the backrooms is a great concept for a movie",
+	"the americans took our rice again",
+	"creeper, aw man, so we back in theaif hqeiorhgierwn",
+	"timezones are annoying",
+	"every timezone is atleast an hour apart from the ones beside them",
+	"what is the meaning to life? the answer is said to be 42. it's based on a movie",
+	"heyyyyy",
+	"no sharing oki",
 }
 return Phrases[math.random(1, #Phrases)]
