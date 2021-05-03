@@ -24,5 +24,14 @@ local Phrases = {
 	"what is the meaning to life? the answer is said to be 42. it's based on a movie",
 	"heyyyyy",
 	"no sharing oki",
+	"hey dont trip into the backrooms!",
+	"help, i've fallen and i can't get up!",
+	"where is my burger?",
+	"what is that tall black creature idk probably a spider- AIJJFEI",
+	"top 10 famous last words: mlg water bucket into a volcano",
+	"EA Sports, copying and pasting games are what they do!",
+	"haeden's name in chinese comes out as hayden LOL F",
+	"my dad came back after getting milk, took 25 minutes tho",
+	"if you read this then how??",
 }
 return Phrases[math.random(1, #Phrases)]
