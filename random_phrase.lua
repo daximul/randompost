@@ -33,5 +33,6 @@ local Phrases = {
 	"haeden's name in chinese comes out as hayden LOL F",
 	"my dad came back after getting milk, took 25 minutes tho",
 	"if you read this then how??",
+	"idk",
 }
 return Phrases[math.random(1, #Phrases)]
