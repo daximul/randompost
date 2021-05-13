@@ -1,5 +1,7 @@
 --[[
 
+https://devforum.roblox.com/t/propertymodule-easily-detect-changes-to-variables/571465
+
 Module
 	PropertiesModule.new()
 		returns a PropertiesModule class
