@@ -1,3 +1,18 @@
+--[[
+
+Module
+	PropertiesModule.new()
+		returns a PropertiesModule class
+Class
+	Method Set(PropertyName, NewValue)
+		Set a property without firing the associated event.
+	Method End()
+		All events are disconnected. You can still access and set properties.
+	Method GetPropertyChangedEvent(PropertyName)
+		Returns an event that passes the new, and old value.
+
+]]--
+
 local Event = {}
 Event.__index = Event
 
