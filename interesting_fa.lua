@@ -25,6 +25,7 @@ end)
 
 
 
+
 table.filter = function(tbl, ret)
     if (type(tbl) == "table") then
         local new = {}
@@ -62,4 +63,40 @@ AddCommand("serverhop", {"sh"}, "switches servers (optional: min or max)", {{"mi
             return "no servers foudn"
         end
     end
+end)
+
+
+
+
+AddCommand("blink", {"blinkws"}, "cframe speed", {}, function(Caller, Args, Tbl)
+    local Speed = tonumber(Args[1]) or 5
+    local Time = tonumber(Args[2]) or .05
+    LoadCommand("blink").CmdExtra[1] = Speed
+    coroutine.wrap(function()
+        while (next(LoadCommand("blink").CmdExtra) and wait(Time)) do
+            Speed = LoadCommand("blink").CmdExtra[1]
+            if (Keys["W"]) then
+                GetRoot().CFrame = GetRoot().CFrame * CFrame.new(0, 0, -Speed);
+            end
+            if (Keys["A"]) then
+                GetRoot().CFrame = GetRoot().CFrame * CFrame.new(-Speed, 0, 0);
+            end
+            if (Keys["S"]) then
+                GetRoot().CFrame = GetRoot().CFrame * CFrame.new(0, 0, Speed);
+            end
+            if (Keys["D"]) then
+                GetRoot().CFrame = GetRoot().CFrame * CFrame.new(Speed, 0, 0);
+            end
+        end
+    end)();
+    return "blink enabled, for best results use shiftlock"
+end)
+
+AddCommand("unblink", {"noblinkws", "unblink", "noblink"}, "stops cframe speed", {}, function()
+    local Blink = LoadCommand("blink").CmdExtra
+    if (not next(Blink)) then
+        return "blink is already disabled"
+    end
+    LoadCommand("blink").CmdExtra = {}
+    return "blink mode disabled"
 end)
