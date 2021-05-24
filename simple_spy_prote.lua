@@ -14,9 +14,10 @@ end
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local Highlight = loadstring(game:HttpGetAsync("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/highlight.lua"))();
-local ProtectionService = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/main/main.lua"))();
+local ProtectionService = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/daximul/who/main/a/test/what/others/prote.lua"))();
 
 local SecureParentGui = function(Gui)
+	ProtectionService.ProtectInstance(Gui)
 	local HttpService = game:GetService("HttpService")
 	local CoreGui = game:GetService("CoreGui")
 	Gui.Name = HttpService:GenerateGUID(false):gsub("-", ""):sub(1, math.random(25, 30))
@@ -31,7 +32,6 @@ local SecureParentGui = function(Gui)
 	else
 		Gui.Parent = CoreGui
 	end
-	ProtectionService.ProtectInstance(Gui)
 end
 
 local SimpleSpy2 = Instance.new("ScreenGui")
