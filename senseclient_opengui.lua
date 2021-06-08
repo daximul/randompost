@@ -2387,6 +2387,7 @@ local _Noclip = (function()
 			if not module.Options.Enabled then return end
 			for _, part in pairs(Model:GetDescendants()) do
 				if part:IsA("BasePart") then
+					_ProtectionService.SpoofProperty(part, "CanCollide")
 					part.CanCollide = false
 				end
 			end
