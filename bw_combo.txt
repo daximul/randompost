@@ -6,6 +6,18 @@ spawn(function()
 		end
 	end
 end)
+spawn(function()
+	while wait(1) do
+		local Players = game:GetService("Players")
+		for index,plr in pairs(Players:GetPlayers()) do
+			for i,v in pairs(plr.Character:GetDescendants()) do
+				if v:IsA("BoxHandleAdornment") then
+					v.Color = plr.TeamColor
+				end
+			end
+		end
+	end
+end)
 spawn(function() loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/DiamondHands-Exploit/BedWarsExploit/main/Source.lua"))() end)
 spawn(function() loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/daximul/who/main/a/test/what/script.lua"))() end)
 --// BedWars;
