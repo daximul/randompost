@@ -2478,9 +2478,6 @@ pcall(function()
 		local LUAData = HttpService:JSONDecode(JSONData)
 		saveData.Options = LUAData.Options
 		saveData.Hotkeys = LUAData.Hotkeys
-		print("Save Data found")
-	else
-		print("Save Data not found")
 	end
 end)
 
