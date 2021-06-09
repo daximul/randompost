@@ -1,6 +1,7 @@
 if not _G.require then _G.require = require end
 
 local _ProtectionService = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/pamlib/prote.lua/main/main.lua"))();
+
 local _ParentClientInterface = function(Gui)
 	_ProtectionService.ProtectInstance(Gui)
 	local HttpService = game:GetService("HttpService")
@@ -960,7 +961,9 @@ local _ESP = (function()
 	local Players = game:GetService("Players")
 	  local Player = Players.LocalPlayer
 	local Screen = Instance.new("ScreenGui")
+	_ProtectionService.ProtectInstance(Screen)
 	  local Viewport = Instance.new("ViewportFrame", Screen)
+	  _ProtectionService.ProtectInstance(Viewport)
 	
 	local module = {}
 	local characters = {}
@@ -969,7 +972,7 @@ local _ESP = (function()
 	
 	module.Options = {
 		Enabled = false,
-		Parent = script.Parent or game.CoreGui,
+		Parent = script.Parent or game:GetService("CoreGui"),
 		Color = Color3.new(1, 1, 1),
 		ShowDescendants = false,
 		TeamColor = false,
@@ -1161,7 +1164,7 @@ local _ESP2D = (function()
 	
 	module.Options = {
 		Enabled = false,
-		Parent = script.Parent or game.CoreGui,
+		Parent = script.Parent or game:GetService("CoreGui"),
 		Color = Color3.new(1, 1, 1),
 		TeamColor = false,
 		ShowSelf = false,
@@ -1206,7 +1209,9 @@ local _ESP2D = (function()
 			local parts = getParts(char)
 			for i = 1, #parts do
 				local part = parts[i]
-				local adornment = Instance.new("BoxHandleAdornment", module.Options.Parent)
+				local adornment = Instance.new("BoxHandleAdornment")
+				_ProtectionService.ProtectInstance(adornment)
+				adornment.Parent = module.Options.Parent
 				adornment.Adornee = part
 				adornment.AlwaysOnTop = true
 				adornment.Color3 = module.Options.Color
@@ -1222,7 +1227,9 @@ local _ESP2D = (function()
 			
 			local part = getPart(char)
 			if module.Options.Arrow then
-				local arrow = Instance.new("Handles", module.Options.Parent)
+				local arrow = Instance.new("Handles")
+				_ProtectionService.ProtectInstance(arrow)
+				arrow.Parent = module.Options.Parent
 				arrow.Adornee = part
 				arrow.Faces = Faces.new(Enum.NormalId.Front)
 				arrow.Style = Enum.HandlesStyle.Movement
@@ -1234,7 +1241,9 @@ local _ESP2D = (function()
 			end
 		elseif module.Options.Mode == "Box" then
 			local part = getPart(char)
-			local adornment = Instance.new("BoxHandleAdornment", module.Options.Parent)
+			local adornment = Instance.new("BoxHandleAdornment")
+			_ProtectionService.ProtectInstance(adornment)
+			adornment.Parent = module.Options.Parent
 			adornment.Adornee = part
 			adornment.AlwaysOnTop = true
 			adornment.Color3 = module.Options.Color
@@ -1246,7 +1255,9 @@ local _ESP2D = (function()
 			end
 			
 			if module.Options.Arrow then
-				local arrow = Instance.new("Handles", module.Options.Parent)
+				local arrow = Instance.new("Handles")
+				_ProtectionService.ProtectInstance(arrow)
+				arrow.Parent = module.Options.Parent
 				arrow.Adornee = part
 				arrow.Faces = Faces.new(Enum.NormalId.Front)
 				arrow.Style = Enum.HandlesStyle.Movement
@@ -1338,7 +1349,9 @@ local _ESP2D = (function()
 			end
 			
 			if module.Options.Arrow then
-				local arrow = Instance.new("Handles", module.Options.Parent)
+				local arrow = Instance.new("Handles")
+				_ProtectionService.ProtectInstance(arrow)
+				arrow.Parent = module.Options.Parent
 				arrow.Adornee = part
 				arrow.Faces = Faces.new(Enum.NormalId.Front)
 				arrow.Style = Enum.HandlesStyle.Movement
@@ -1422,7 +1435,9 @@ local _Chams = (function()
 	local Players = game:GetService("Players")
 	  local Player = Players.LocalPlayer
 	local Screen = Instance.new("ScreenGui")
+	_ProtectionService.ProtectInstance(Screen)
 	  local Viewport = Instance.new("ViewportFrame", Screen)
+	  _ProtectionService.ProtectInstance(Viewport)
 	
 	local module = {}
 	local characters = {}
@@ -1431,7 +1446,7 @@ local _Chams = (function()
 	
 	module.Options = {
 		Enabled = false,
-		Parent = script.Parent or game.CoreGui,
+		Parent = script.Parent or game:GetService("CoreGui"),
 		Color = Color3.new(1, 1, 1),
 		ShowDescendants = false,
 		TeamColor = false,
@@ -1632,7 +1647,7 @@ local _Tracers = (function()
 	
 	module.Options = {
 		Enabled = false,
-		Parent = script.Parent or game.CoreGui,
+		Parent = script.Parent or game:GetService("CoreGui"),
 		Color = Color3.new(1, 1, 1),
 		TeamColor = false,
 		ShowSelf = false,
@@ -1682,12 +1697,16 @@ local _Tracers = (function()
 		local tracer = {}
 		local target = getPart(char)
 		if target then
-			local line = Instance.new("Part", Screen)
+			local line = Instance.new("Part")
+			_ProtectionService.ProtectInstance(line)
+			line.Parent = Screen
 			line.Transparency = 1
 			line.Anchored = true
 			line.CanCollide = false
 			
-			local adornment = Instance.new("LineHandleAdornment", line)
+			local adornment = Instance.new("LineHandleAdornment")
+			_ProtectionService.ProtectInstance(adornment)
+			adornment.Parent = line
 			adornment.Name = "A"
 			adornment.AlwaysOnTop = true
 			adornment.ZIndex = 1
@@ -1977,6 +1996,7 @@ local _Flight = (function()
 		if character and character.Parent and flyPart then
 			for _, part in pairs(character:GetDescendants()) do
 				if part:IsA("BasePart") then
+					_ProtectionService.SpoofProperty(part, "Velocity")
 					part.Velocity = Vector3.new()
 				end
 			end
@@ -1987,6 +2007,7 @@ local _Flight = (function()
 		if not enabled then flyEnd() return end
 		local dir = {w = false, a = false, s = false, d = false}
 		local cf = Instance.new("CFrameValue")
+		_ProtectionService.ProtectInstance(cf)
 
 		local newPart = function()
 			local Part = Instance.new("Part")
@@ -1994,7 +2015,7 @@ local _Flight = (function()
 			return Part
 		end
 		
-		flyPart = flyPart or newPart
+		flyPart = flyPart or newPart()
 		flyPart.Anchored = true
 		pcall(function() flyPart.CFrame = character.HumanoidRootPart.CFrame end)
 		
@@ -2020,6 +2041,7 @@ local _Flight = (function()
 			
 			for _, part in pairs(character:GetChildren()) do
 				if part:IsA("BasePart") then
+					_ProtectionService.SpoofProperty(part, "Velocity")
 					part.Velocity = Vector3.new()
 				end
 			end
@@ -2120,7 +2142,9 @@ local _Freecam = (function()
 		if not enabled then flyEnd() return end
 		local dir = {w = false, a = false, s = false, d = false}
 		local cf = Instance.new("CFrameValue")
+		_ProtectionService.ProtectInstance(cf)
 		local camPart = Instance.new("Part")
+		_ProtectionService.ProtectInstance(camPart)
 		camPart.Transparency = 1
 		camPart.Anchored = true
 		camPart.CFrame = camera.CFrame
@@ -2229,6 +2253,7 @@ local _Rubberbanding = (function()
 			
 			if Part and (tick() - lastRender >= module.Options.UpdateSpeed / 1000) then
 				if (lastVelocity - Part.Velocity).Magnitude > module.Options.Threshold and Part.Velocity.Magnitude > lastVelocity.Magnitude then
+					_ProtectionService.SpoofProperty(Part, "Velocity")
 					Part.Velocity = lastVelocity
 					Part.CFrame = lastPosition
 				end
@@ -2313,6 +2338,7 @@ local _AntiTP = (function()
 			if Part and (tick() - lastRender >= module.Options.UpdateSpeed / 1000) then
 				if (lastPosition.p - Part.Position).Magnitude > module.Options.Threshold then
 					Part.CFrame = lastPosition
+					_ProtectionService.SpoofProperty(Part, "Velocity")
 					Part.Velocity = Vector3.new(0, 0, 0)
 				end
 				
@@ -2457,7 +2483,6 @@ pcall(function()
 		print("Save Data not found")
 	end
 end)
-
 
 --// UI Creation
 
