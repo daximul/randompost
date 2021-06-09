@@ -2632,11 +2632,11 @@ local Render = gui:create("Container", {
 		Min = 1,
 		Max = 120,
 		Round = 1,
-		Default = origsettings.Camera.Fov,
+		Default = origsettings.Camera.Fov or 70,
 		Hint = "Change the Camera FieldOfView",
 		Callback = function(amount)
 			_ProtectionService.SpoofProperty(workspace.Camera.FieldOfView)
-			workspace.Camera.FieldOfView = tonumber(amount) or 70
+			workspace.Camera.FieldOfView = tonumber(amount) or origsettings.Camera.Fov or 70
 		end,
 	})
 	local ESP = Render.self:create("Toggle", {
