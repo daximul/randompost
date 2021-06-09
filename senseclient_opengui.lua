@@ -2463,65 +2463,6 @@ local _Noclip = (function()
 	return module
 	
 end)()
-local origsettings = {
-	Lighting = {
-		abt = game:GetService("Lighting").Ambient,
-		oabt = game:GetService("Lighting").OutdoorAmbient,
-		brt = game:GetService("Lighting").Brightness,
-		time = game:GetService("Lighting").ClockTime,
-		fe = game:GetService("Lighting").FogEnd,
-		fs = game:GetService("Lighting").FogStart,
-		gs = game:GetService("Lighting").GlobalShadows,
-	},
-	Camera = {
-		Fov = workspace.CurrentCamera.FieldOfView,
-	},
-}
-local BrightnessLoop = nil
-local _Fullbright = function(val)
-	if val == true then
-		if BrightnessLoop ~= nil then
-			BrightnessLoop:Disconnect()
-			wait()
-			BrightnessLoop = nil
-		end
-		local Lighting = game:GetService("Lighting")
-		_ProtectionService.SpoofProperty(Lighting, "Brightness")
-		_ProtectionService.SpoofProperty(Lighting, "ClockTime")
-		_ProtectionService.SpoofProperty(Lighting, "FogEnd")
-		_ProtectionService.SpoofProperty(Lighting, "GlobalShadows")
-		_ProtectionService.SpoofProperty(Lighting, "OutdoorAmbient")
-		local brightFunc = function()
-			Lighting.Brightness = 2
-			Lighting.ClockTime = 14
-			Lighting.FogEnd = 100000
-			Lighting.GlobalShadows = false
-			Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
-		end
-		BrightnessLoop = game:GetService("RunService").RenderStepped:Connect(brightFunc)
-	elseif val == false then
-		if BrightnessLoop ~= nil then
-			BrightnessLoop:Disconnect()
-			wait()
-			BrightnessLoop = nil
-		end
-		local Lighting = game:GetService("Lighting")
-		_ProtectionService.SpoofProperty(Lighting, "Ambient")
-		_ProtectionService.SpoofProperty(Lighting, "OutdoorAmbient")
-		_ProtectionService.SpoofProperty(Lighting, "Brightness")
-		_ProtectionService.SpoofProperty(Lighting, "ClockTime")
-		_ProtectionService.SpoofProperty(Lighting, "FogEnd")
-		_ProtectionService.SpoofProperty(Lighting, "FogStart")
-		_ProtectionService.SpoofProperty(Lighting, "GlobalShadows")
-		Lighting.Ambient = origsettings.Lighting.abt
-		Lighting.OutdoorAmbient = origsettings.Lighting.oabt
-		Lighting.Brightness = origsettings.Lighting.brt
-		Lighting.ClockTime = origsettings.Lighting.time
-		Lighting.FogEnd = origsettings.Lighting.fe
-		Lighting.FogStart = origsettings.Lighting.fs
-		Lighting.GlobalShadows = origsettings.Lighting.gs
-	end
-end
 
 --// Variables
 local RunService = game:GetService("RunService")
@@ -2619,26 +2560,6 @@ local Render = gui:create("Container", {
 				end
 			end,
 		})
-	local FullBri = Render.self:create("Toggle", {
-		Name = "Full Bright",
-		Default = false,
-		Hint = "Toggle Full Brightness",
-		Callback = function(enabled)
-			_Fullbright(enabled)
-		end,
-	})
-	local ChangeFOV = Render.self:create("Number", {
-		Name = "FOV",
-		Min = 1,
-		Max = 120,
-		Round = 1,
-		Default = origsettings.Camera.Fov or 70,
-		Hint = "Change the Camera FieldOfView",
-		Callback = function(amount)
-			_ProtectionService.SpoofProperty(workspace.Camera.FieldOfView)
-			workspace.Camera.FieldOfView = tonumber(amount) or origsettings.Camera.Fov or 70
-		end,
-	})
 	local ESP = Render.self:create("Toggle", {
 		Name = "ESP",
 		Default = false,
@@ -3082,22 +3003,6 @@ local Movement = gui:create("Container", {
 				_Flight.Options.Smoothness = value
 			end,
 		})
-	local AutoSpr = Movement.self:create("Toggle", {
-		Name = "Auto Sprint",
-		Default = false,
-		Hint = "Toggle Auto Sprint",
-		Callback = function(enabled)
-			if enabled == true then
-				local Human = Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid")
-				_ProtectionService.ProtectInstance(Human)
-				Human.WalkSpeed = Human.WalkSpeed + 7
-			elseif enabled == false then
-				local Human = Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid")
-				_ProtectionService.ProtectInstance(Human)
-				Human.WalkSpeed = origsettings.Player.Ws or 16
-			end
-		end,
-	})--|
 
 --// Player
 local PlayerTab = gui:create("Container", {
