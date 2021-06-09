@@ -20,6 +20,14 @@ local _ParentClientInterface = function(Gui)
 	end
 end
 
+spawn(function()
+	if isfolder and makefolder and isfile and writefile then
+		if not isfolder("sense-client") then
+			makefolder("sense-client")
+		end
+	end
+end)
+
 --// API References
 local GUIData = (function()
 	-- Variables	
@@ -64,7 +72,7 @@ local GUIData = (function()
 	local writefile = writefile or function() end
 	local Save = function()
 		local JSONData = HttpService:JSONEncode(saveData)
-		local JSONName = ("SenseClient_" .. tostring(game.PlaceId) .. ".txt")
+		local JSONName = ("sense-client/" .. tostring(game.PlaceId) .. ".JSON")
 		writefile(JSONName, JSONData)
 	end
 	
@@ -2389,6 +2397,7 @@ local _AntiTP = (function()
 	return module
 	
 end)()
+local _SpoofCollison = true
 local _Noclip = (function()
 	--// Variables
 	local RunService = game:GetService("RunService")
@@ -2413,7 +2422,9 @@ local _Noclip = (function()
 			if not module.Options.Enabled then return end
 			for _, part in pairs(Model:GetDescendants()) do
 				if part:IsA("BasePart") then
-					_ProtectionService.SpoofProperty(part, "CanCollide")
+					if _SpoofCollison == true then
+						_ProtectionService.SpoofProperty(part, "CanCollide")
+					end
 					part.CanCollide = false
 				end
 			end
@@ -2472,7 +2483,7 @@ local backcolor = Color3.new()
 --// Saving
 local readfile = readfile or function() end
 pcall(function()
-	local JSONName = ("SenseClient_" .. tostring(game.PlaceId) .. ".txt")
+	local JSONName = ("sense-client/" .. tostring(game.PlaceId) .. ".JSON")
 	local JSONData = readfile(JSONName)
 	if JSONData then
 		local LUAData = HttpService:JSONDecode(JSONData)
@@ -3066,7 +3077,15 @@ local PlayerTab = gui:create("Container", {
 		Callback = function(enabled)
 			_Noclip.Toggle(enabled)
 		end,
-	})
+	})--|
+		local SpoofCol = Noclip.self:create("Checkbox", {
+			Name = "Spoof Collision",
+			Default = true,
+			Hint = "If CanCollide is spoofed",
+			Callback = function(value)
+				_SpoofCollison = value
+			end,
+		})
 
 --// UI Functionality
 RunService.RenderStepped:Connect(function()
