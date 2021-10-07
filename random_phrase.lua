@@ -43,6 +43,7 @@ local Phrases = {
 	"the human body literally glows because of protons lmao",
 	"dirty or infected door knob? get a copper door knob! they are self-disinfecting",
 	"cotton candy was invented by a dentist",
-	"chewing gum boosts concentration"
+	"chewing gum boosts concentration",
+        "to be considered a millionaire nowadays, you need 2.5 million dollars"
 }
 return Phrases[math.random(1, #Phrases)]
