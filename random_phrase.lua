@@ -1,7 +1,6 @@
 local Phrases = {
 	"DA is literally better than IY",
 	"hot ui",
-	"i cant wait for tohru admin release",
 	"give me synapse now",
 	"how's life?",
 	"if u read this have a good day",
@@ -44,6 +43,9 @@ local Phrases = {
 	"dirty or infected door knob? get a copper door knob! they are self-disinfecting",
 	"cotton candy was invented by a dentist",
 	"chewing gum boosts concentration",
-        "to be considered a millionaire nowadays, you need 2.5 million dollars"
+        "to be considered a millionaire nowadays, you need 2.5 million dollars",
+	"https://infinite.store.likesyou.org/",
+	"among us is a good game, its a murder mystery game, except the memes can be cringe tho",
+	"a man survived biting a dorito chip sideways"
 }
 return Phrases[math.random(1, #Phrases)]
