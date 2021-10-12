@@ -48,4 +48,4 @@ local Phrases = {
 	"among us is a good game, its a murder mystery game, except the memes can be cringe tho",
 	"a man survived biting a dorito chip sideways"
 }
-return Phrases[math.random(1, #Phrases)]
+return tostring(Phrases[math.random(1, #Phrases)])
