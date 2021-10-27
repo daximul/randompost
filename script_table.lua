@@ -33,4 +33,12 @@ AddScript("Zombie Uprising [Kill Aura]", "MSDOS", "4972091010", function()
 	LoadURL("https://raw.githubusercontent.com/toskaman/fb/master/MSDOS")
 end)
 
+AddScript("Titan Warfare [Inf Ammo +]", "Bebo Mods", "6297822481", function()
+	LoadURL("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/TitanWarfare")
+end)
+
+AddScript("Domain X Hub", "shlex", "Universal", function()
+	LoadURL("https://shlex.dev/release/domainx/latest.lua")
+end)
+
 return ScriptsHolder
