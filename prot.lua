@@ -3,6 +3,8 @@ local UnSpoofInstance;
 do
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
+local TeleportService = game:GetService("TeleportService")
+local LogService = game:GetService("LogService")
 local LocalPlayer = Players.LocalPlayer
 
 local Tfind, sort, concat, pack, unpack;
@@ -268,7 +270,7 @@ do
             end
         else
             local Cloned;
-            if (not NoClone and IsA(Instance_, "Instance") and not Services[tostring(Instance_)] and Instance_.Archivable) then
+            if (not NoClone and IsA(Instance_, "Instance") and not game:GetService([tostring(Instance_)]) and Instance_.Archivable) then
                 local Success, Ret = pcall(Clone, Instance_);
                 if (Success) then
                     Cloned = Ret
@@ -363,7 +365,7 @@ do
         end
 
         if (Hooks.UndetectedMessageOut and Method == "GetLogHistory") then
-            if (self == Services.LogService) then
+            if (self == LogService then
                 local LogHistory = __Namecall(...);
                 local MessagesOut = Hooks.MessagesOut
                 local FilteredLogHistory = {}
@@ -643,7 +645,7 @@ Hooks.OldKick = hookfunction(LocalPlayer.Kick, newcclosure(function(...)
     return Hooks.OldKick(...);
 end))
 
-Hooks.OldTeleportToPlaceInstance = hookfunction(Services.TeleportService.TeleportToPlaceInstance, newcclosure(function(...)
+Hooks.OldTeleportToPlaceInstance = hookfunction(TeleportService.TeleportToPlaceInstance, newcclosure(function(...)
     local Player, PlaceId = ...
     if (Hooks.AntiTeleport and Player == LocalPlayer) then
         local Notify = Utils.Notify
@@ -660,7 +662,7 @@ Hooks.OldTeleportToPlaceInstance = hookfunction(Services.TeleportService.Telepor
     end
     return Hooks.OldTeleportToPlaceInstance(...);
 end))
-Hooks.OldTeleport = hookfunction(Services.TeleportService.Teleport, newcclosure(function(...)
+Hooks.OldTeleport = hookfunction(TeleportService.Teleport, newcclosure(function(...)
     local Player, PlaceId = ...
     if (Hooks.AntiTeleport and Player == LocalPlayer) then
         local Notify = Utils.Notify
@@ -697,7 +699,6 @@ Hooks.GetStateEnabled = hookfunction(__H.GetStateEnabled, function(...)
 end)
 
 do
-    local LogService = Services.LogService
     local MessageOut = LogService.MessageOut
     Hooks.MessagesOut = {}
     local MessagesOut = Hooks.MessagesOut
