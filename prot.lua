@@ -2,6 +2,7 @@ local ProtectInstance, SpoofInstance, SpoofProperty;
 local UnSpoofInstance;
 do
 local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 
 local Tfind, sort, concat, pack, unpack;
@@ -614,7 +615,7 @@ Hooks.IsA = hookfunction(game.IsA, newcclosure(function(...)
 end));
 
 local UndetectedCmdBar;
-Hooks.OldGetFocusedTextBox = hookfunction(Services.UserInputService.GetFocusedTextBox, newcclosure(function(...)
+Hooks.OldGetFocusedTextBox = hookfunction(UserInputService.GetFocusedTextBox, newcclosure(function(...)
     if (not checkcaller() and UndetectedCmdBar) then
         local FocusedTextBox = Hooks.OldGetFocusedTextBox(...);
         if (FocusedTextBox and Tfind(ProtectedInstances, FocusedTextBox)) then
