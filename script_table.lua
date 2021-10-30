@@ -41,4 +41,8 @@ AddScript("Domain X Hub", "shlex", "Universal", function()
 	LoadURL("https://shlex.dev/release/domainx/latest.lua")
 end)
 
+AddScript("Bedwars Vape v4", "7GrandDadPGN", "6872265039", function()
+	LoadURL("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua")
+end)
+
 return ScriptsHolder
