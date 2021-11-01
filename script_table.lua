@@ -45,4 +45,8 @@ AddScript("Vape v4", "7GrandDadPGN", "Bedwars", function()
 	LoadURL("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua")
 end)
 
+AddScript("[ Auto Clicker ]", "Ezpi", "[Universal]", function()
+	LoadURL("https://raw.githubusercontent.com/JustEzpi/ROBLOX-Scripts/main/ROBLOX_AutoClicker")
+end)
+
 return ScriptsHolder
