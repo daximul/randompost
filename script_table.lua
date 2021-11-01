@@ -1,11 +1,11 @@
 local ScriptsHolder = {}
 
-local AddScript = function(scriptname, devs, gameid, scrfunction)
+local AddScript = function(ScriptName, Devs, GameItWorksOn, ScriptFunction)
 	ScriptsHolder[#ScriptsHolder + 1] = {
-		["Name"] = tostring(scriptname),
-		["Dev"] = tostring(devs),
-		["ID"] = tostring(gameid),
-		["Func"] = scrfunction
+		["Name"] = tostring(ScriptName),
+		["Dev"] = tostring(Devs),
+		["ID"] = tostring(GameItWorksOn),
+		["Func"] = ScriptFunction
 	}
 end
 
@@ -13,35 +13,35 @@ local LoadURL = function(link)
 	return loadstring(game:HttpGetAsync((tostring(link))))();
 end
 
-AddScript("CMD-X", "Various Developers", "Universal", function()
+AddScript("[ CMD-X ]", "Various Developers", "[Universal]", function()
 	LoadURL("https://raw.githubusercontent.com/Toon-arch/cmdx-1.5/main/minified.lua")
 end)
 
-AddScript("Sense Client", "Toon", "Universal", function()
+AddScript("[ Sense Client ]", "Toon", "[Universal]", function()
 	LoadURL("https://raw.githubusercontent.com/Toon-arch/SenseClient/main/main.lua")
 end)
 
-AddScript("Hotel Elephant [Ruin Map]", "Redus", "23578803", function()
+AddScript("Ruin Map", "Redus", "Hotel Elephant", function()
 	LoadURL("https://raw.githubusercontent.com/Redusofficial/Redus-Roblox-Scripts/main/Hotel%20elephant.lua")
 end)
 
-AddScript("Saber Simulator [Auto Farm]", "RyanRenolds", "3823781113", function()
+AddScript("Auto Farm", "RyanRenolds", "Saber Simulator", function()
 	LoadURL("https://raw.githubusercontent.com/ScriptRUs/Banana/main/SaberSimulatorV2.lua")
 end)
 
-AddScript("Zombie Uprising [Kill Aura]", "MSDOS", "4972091010", function()
+AddScript("Kill Aura", "MSDOS", "Zombie Uprising", function()
 	LoadURL("https://raw.githubusercontent.com/toskaman/fb/master/MSDOS")
 end)
 
-AddScript("Titan Warfare [Inf Ammo +]", "Bebo Mods", "6297822481", function()
+AddScript("Inf Ammo, etc.", "Bebo Mods", "Titan Warfare", function()
 	LoadURL("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/TitanWarfare")
 end)
 
-AddScript("Domain X Hub", "shlex", "Universal", function()
+AddScript("Domain X Hub", "shlex", "[Universal]", function()
 	LoadURL("https://shlex.dev/release/domainx/latest.lua")
 end)
 
-AddScript("Bedwars Vape v4", "7GrandDadPGN", "6872265039", function()
+AddScript("Vape v4", "7GrandDadPGN", "Bedwars", function()
 	LoadURL("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua")
 end)
 
