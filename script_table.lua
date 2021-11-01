@@ -49,4 +49,8 @@ AddScript("[ Auto Clicker ]", "Ezpi", "[Universal]", function()
 	LoadURL("https://raw.githubusercontent.com/JustEzpi/ROBLOX-Scripts/main/ROBLOX_AutoClicker")
 end)
 
+AddScript("Kill Aura", "Bebo Mods", "Combat Warriors", function()
+	LoadURL("https://raw.githubusercontent.com/SpiritXmas/Project-Hook/main/required.lua")
+end)
+
 return ScriptsHolder
