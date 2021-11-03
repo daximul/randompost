@@ -53,4 +53,14 @@ AddScript("Kill Aura", "Bebo Mods", "Combat Warriors", function()
 	LoadURL("https://raw.githubusercontent.com/SpiritXmas/Project-Hook/main/required.lua")
 end)
 
+AddScript("Anticheat Disabler", "Toon", "Skywars", function()
+	local Players = game:GetService("Players")
+	game:GetService("RunService").RenderStepped:Connect(function()
+		if Players.LocalPlayer.PlayerGui.Extra:FindFirstChild("AntiSploitClient") and Players.LocalPlayer.PlayerGui.Extra:FindFirstChild("AntiSploitClient2") then
+			Players.LocalPlayer.PlayerGui.Extra.AntiSploitClient:Destroy()
+			Players.LocalPlayer.PlayerGui.Extra.AntiSploitClient2:Destroy()
+		end
+	end)
+end)
+
 return ScriptsHolder
